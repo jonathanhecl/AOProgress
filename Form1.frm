@@ -8,7 +8,7 @@ Begin VB.Form Form1
    LinkTopic       =   "Form1"
    ScaleHeight     =   5085
    ScaleWidth      =   4620
-   StartUpPosition =   3  'Windows Default
+   StartUpPosition =   2  'CenterScreen
    Begin VB.CommandButton Command2 
       Caption         =   "+"
       Height          =   495
@@ -43,6 +43,8 @@ Begin VB.Form Form1
       BackDangerColor =   8421631
       BackSubColor    =   128
       BorderColor     =   16711935
+      ShowText        =   0   'False
+      ShowShadow      =   0   'False
       BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Verdana"
          Size            =   12

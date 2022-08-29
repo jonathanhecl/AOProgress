@@ -1,0 +1,7 @@
+[History]
+1=#P0#=mb	#P1#=ShowShadow	#P2#=Proyecto1/uAOProgress/ShowShadow [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20220829202736	#P7#=0	#P8#=8	.
+2=#P0#=mb	#P1#=ShowText	#P2#=Proyecto1/uAOProgress/ShowText [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20220829202941	#P7#=0	#P8#=14	.
+3=#P0#=mb	#P1#=ShowText	#P2#=Proyecto1/uAOProgress/ShowText [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20220829202910	#P7#=0	#P8#=6	.
+4=#P0#=mb	#P1#=UserControl_WriteProperties	#P2#=Proyecto1/uAOProgress/UserControl_WriteProperties	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20220829202625	#P7#=0	#P8#=26	.
+5=#P0#=mb	#P1#=UserControl_InitProperties	#P2#=Proyecto1/uAOProgress/UserControl_InitProperties	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20220829202457	#P7#=0	#P8#=1	.
+6=#P0#=mb	#P1#=UserControl_ReadProperties	#P2#=Proyecto1/uAOProgress/UserControl_ReadProperties	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20220829202545	#P7#=0	#P8#=39	.

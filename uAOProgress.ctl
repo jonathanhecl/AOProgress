@@ -106,7 +106,7 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = True
 '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 '%                                                     %
-'%                   AO PROGRESS v1.5                  %
+'%                   AO PROGRESS v1.6                  %
 '%               Copyright © 2021 by ^[GS]^            %
 '%                    www.GS-ZONE.org                  %
 '%                                                     %
@@ -116,6 +116,8 @@ Attribute VB_Exposed = True
 '%                                                     %
 '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 '%  Changelog:                                         %
+'%   29/08/2022 - Se agrego la propiedad de ShowShadow %
+'%                y se corrigio el ShowText.           %
 '%   13/04/2021 - Se agrego el color danger y se       %
 '%                mejoraron las animaciones. (^[GS]^)  %
 '%   25/04/2013 - Se agrego la posibilidad de usar     %
@@ -137,6 +139,7 @@ Private iMin As Long
 Private iValue As Long
 Private iNewValue As Long
 Private bShowText As Boolean
+Private bShowShadow As Boolean
 Private sCustomText As String
 Private bAnimate As Boolean
 Private bEnabled As Boolean
@@ -354,6 +357,7 @@ On Error Resume Next
     iValue = 1
     iMinDanger = 0
     bShowText = True
+    bShowShadow = True
     sCustomText = vbNullString
     bEnabled = True
     bAnimate = True
@@ -415,6 +419,7 @@ On Error Resume Next
         lBackDangerColor = .ReadProperty("BackDangerColor", RGB(125, 0, 0))
         lBorderColor = .ReadProperty("BorderColor", RGB(200, 200, 200))
         bShowText = .ReadProperty("ShowText", True)
+        bShowShadow = .ReadProperty("ShowShadow", True)
         sCustomText = .ReadProperty("CustomText", vbNullString)
         Set lblStat.Font = .ReadProperty("FONT", lblStat.Font)
         Set lblShadowText.Font = .ReadProperty("FONT", lblStat.Font)
@@ -427,7 +432,7 @@ On Error Resume Next
     End If
     lblStat.Visible = bShowText
     lblShadowText.ForeColor = ShadowTextColor
-    lblShadowText.Visible = lblStat.Visible
+    lblShadowText.Visible = bShowShadow
     shpStat.FillColor = lBackColor
     shpStat.BorderColor = lBorderColor
     shpBack.BorderColor = lBorderColor
@@ -466,6 +471,7 @@ On Error Resume Next
         .WriteProperty "BackSubColor", lBackSubColor, RGB(75, 75, 75)
         .WriteProperty "BorderColor", lBorderColor, RGB(200, 200, 200)
         .WriteProperty "ShowText", bShowText, True
+        .WriteProperty "ShowShadow", bShowShadow, True
         .WriteProperty "CustomText", sCustomText, ""
         Call .WriteProperty("FONT", lblStat.Font)
         Call .WriteProperty("FONT", lblShadowText.Font)
@@ -921,6 +927,32 @@ On Error Resume Next
     
 End Property
 
+Public Property Get ShowShadow() As Boolean
+'*************************************************
+'Author: ^[GS]^
+'Last modified: 29/08/2022
+'*************************************************
+
+On Error Resume Next
+    
+    ShowShadow = bShowShadow
+    
+End Property
+
+Public Property Let ShowShadow(ByVal NewValue As Boolean)
+'*************************************************
+'Author: ^[GS]^
+'Last modified: 29/08/2022
+'*************************************************
+
+On Error Resume Next
+    
+    bShowShadow = NewValue
+    PropertyChanged "ShowShadow"
+    
+    lblShadowText.Visible = bShowShadow
+    
+End Property
 
 Public Property Get ShowText() As Boolean
 '*************************************************
@@ -946,6 +978,12 @@ On Error Resume Next
     PropertyChanged "ShowText"
     
     lblStat.Visible = bShowText
+    
+    If Not bShowText Then
+        lblShadowText.Visible = False
+    Else
+        lblShadowText.Visible = bShowShadow
+    End If
     
 End Property
 
